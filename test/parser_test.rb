@@ -11,8 +11,8 @@ class ParserTest < Test::Unit::TestCase
 
   def test_parse_pipe
     parsed_people = Parser.parse_pipe <<-SAMPLE
-    Jack | Johnson | J | M | Red | 3-3-1985
-    Brenda | Brian | B | F | Blue | 6-3-1975
+    Johnson | Jack | J | M | Red | 3-3-1985
+    Brian | Brenda | B | F | Blue | 6-3-1975
     SAMPLE
 
     assert_equal @expected_output, parsed_people.map(&:to_s)

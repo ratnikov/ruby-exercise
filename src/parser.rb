@@ -5,7 +5,7 @@ module Parser
 
   def parse_pipe stream
     CSV.parse(stream, ' | ', "\n").map do |person_attributes|
-      first, last, middle, gender, color, dob = *person_attributes.map(&:strip)
+      last, first, middle, gender, color, dob = *person_attributes.map(&:strip)
       Person.new :first => first, :last => last, :gender => gender, :color => color, :date_of_birth => dob
     end
   end
