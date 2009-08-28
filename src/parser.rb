@@ -16,4 +16,12 @@ module Parser
       Person.new :first => first, :last => last, :gender => gender, :color => color, :date_of_birth => dob
     end
   end
+
+  def parse_space stream
+    CSV.parse(stream, ' ').map do |person_attributes|
+      # gotta compact since there may be some leading spaces
+      last, first, middle, gender, dob, color = *person_attributes.compact.map(&:strip)
+      Person.new :first => first, :last => last, :gender => gender, :color => color, :date_of_birth => dob
+    end
+  end
 end

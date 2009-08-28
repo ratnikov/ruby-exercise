@@ -26,4 +26,13 @@ class ParserTest < Test::Unit::TestCase
 
     assert_equal @expected_output, parsed_people.map(&:to_s) 
   end
+
+  def test_parse_space
+    parsed_people = Parser.parse_space <<-SAMPLE
+    Johnson Jack J M 3-3-1985 Red
+    Brian Brenda B F 6-3-1975 Blue
+    SAMPLE
+
+    assert_equal @expected_output, parsed_people.map(&:to_s)
+  end
 end
