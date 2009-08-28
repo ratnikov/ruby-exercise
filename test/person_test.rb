@@ -17,8 +17,12 @@ class PersonTest < Test::Unit::TestCase
   end
 
   def test_date_of_birth_assignment
-    assert_equal '8/13/1975', Person.new(:date_of_birth => '8-13-1975').date_of_birth, "Should regognize the dashed format"
-    assert_equal '8/13/1975', Person.new(:date_of_birth => '8/13/1975').date_of_birth, "Should recognize the slash format"
+    assert_equal Date.parse('8/13/1975'), Person.new(:date_of_birth => '8-13-1975').date_of_birth, "Should regognize the dashed format"
+    assert_equal Date.parse('8/13/1975'), Person.new(:date_of_birth => '8/13/1975').date_of_birth, "Should recognize the slash format"
+  end
+
+  def test_date_of_birth_comparisson
+    assert Person.new(:date_of_birth => '8/13/1975').date_of_birth > Person.new(:date_of_birth => '9/13/1945').date_of_birth
   end
 
   def test_usual_attributes

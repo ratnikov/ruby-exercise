@@ -33,10 +33,11 @@ class Person
 
   def date_of_birth= date
     # replace the - with / so that usual date parser can understand it
-    @date_of_birth = date.gsub(/-/, '/')
+    @date_of_birth = Date.parse date.gsub(/-/, '/')
   end
 
   def to_s
-    [ last, first, gender, date_of_birth, color ].join ' '
+    birth_date = [ date_of_birth.month, date_of_birth.day, date_of_birth.year ].join '/'
+    [ last, first, gender, birth_date, color ].join ' '
   end
 end
