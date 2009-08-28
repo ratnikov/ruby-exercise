@@ -2,7 +2,7 @@ require 'date'
 
 class Person
   attr_accessor :last, :first, :middle, :color
-  attr_reader :gender, :date_of_birth
+  attr_reader :date_of_birth
 
   def initialize options = nil
     if options
@@ -23,12 +23,20 @@ class Person
     # @gender =
   end
 
+  def gender
+    male? ? 'Male' : 'Female'
+  end
+
   def male?
-    self.gender == :male
+    @gender == :male
   end
 
   def date_of_birth= date
     # replace the - with / so that usual date parser can understand it
-    @date_of_birth = Date.parse date.gsub(/-/, '/')
+    @date_of_birth = date.gsub(/-/, '/')
+  end
+
+  def to_s
+    [ last, first, gender, date_of_birth, color ].join ' '
   end
 end
