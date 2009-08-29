@@ -24,3 +24,5 @@ desc "Run the runner"
 task :run do
   puts Runner.run :pipe => 'data/pipe.txt', :space => 'data/space.txt', :comma => 'data/comma.txt'
 end
+
+task :default => [ :run ]
